@@ -22,3 +22,13 @@ console.log('Hai Dunia!')
 
 // Comment-3
 console.log('Hello Purwadhika!') // Code untuk menyapa student Purwadhika
+
+// Ini adalah deskripsi 1
+// Ini adalah deskripsi 2
+// Ini adalah deskirpsi 3
+
+/*
+Ini adalah deskirpsi 1
+Ini adalah deskirpsi 2
+Ini adalah deskirpsi 3
+*/
