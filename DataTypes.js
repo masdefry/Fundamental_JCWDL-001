@@ -36,12 +36,50 @@ console.log(nilai)
 console.log(typeof(nilai))
 
 // Program untuk mendapatkan nilai student
-let nilai = null 
+// let nilai = null 
 
 // ...
 // ...
 // ...
-nilai = 100
+// nilai = 100
+
+// Cont. String
+let number1 = '10'
+let number2 = '20'
+console.log(number1 + number2)
+
+let number3 = '30'
+let number4 = '40'
+let output1 = number3 + number4 // Di concate / Digabungin
+let output2 = number3 - number4 // Pengurangan
+console.log(output1)
+console.log(output2)
+
+let nama1 = 'Ryan'
+let nama2 = 'Defryan'
+console.log(nama1 + nama2)
+console.log(nama1 - nama2) // NaN (Not a Number)
+
+// String Template Literal ---> Harus diapit dengan `...`
+let namaStudent = 'Kevin'
+let asalStudent = 'Jakarta'
+let perkenalan = 'Nama Saya ' + namaStudent + ', Asal Saya ' + asalStudent
+let perkanalanStringLiteral = `Nama Saya ${namaStudent}, Asal Saya ${asalStudent}`
+console.log(perkenalan)
+console.log(perkanalanStringLiteral)
+
+// Cont. NUMBER ---> Kita bisa melakukan operasi aritmatika (+, -, *, /, % mod)
+let angkaPertama = 10
+let angkaKedua = 100
+console.log(angkaPertama + angkaKedua)
+console.log(angkaPertama - angkaKedua)
+console.log(angkaPertama * angkaKedua)
+console.log(angkaPertama / angkaKedua)
+
+// Mod / Sisa Bagi
+console.log(4 % 2) // 0
+console.log(10 % 3) // 1
+console.log(11 % 2) // 1
 
 
 
