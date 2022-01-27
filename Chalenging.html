@@ -2,37 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chalenging</title>
-</head>
-<body>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chalenge-1</title>
+    <title>Day-04 : Chalenging 1</title>
 </head>
 <body>
     <script>
-        // Buatlah program untuk menentukan bilangan input dari user apakah bernilai ganjil/genap
-        // Step1. Kita buat sebuah prompt untuk menerima input dari user
-        let angkaInput = prompt('Silahkan Masukan Angka')
+        // [KALKULATOR SEDERHANA]
+        // Identifikasi Parameter : Angka1, Angka2, Operator, Hasil Perhitungan 
 
-        // Step2. Hitung angka inputan dari user :
-        //          4 % 2 == 0 ---> Bilangan genap
-        //          3 % 2 == 1 ---> Bilangan ganjil
-        let hasilOutput = angkaInput % 2
+        // Step :
+        //      1. Bikin prompt angka1, angka2, operator
+        let angka1, angka2, operator, hasil
 
-        // Step3. Tampilkan hasil perhitungannya
-        if(hasilOutput == 1){
-            alert(`${angkaInput} Merupakan Angka Ganjil`)
-        }else if(hasilOutput == 0){
-            alert(`${angkaInput} Merupakan Angka Genap`)
+        angka1 = Number(prompt('Masukan Angka 1'))
+        angka2 = Number(prompt('Masukan Angka 2'))
+        operator = prompt('Masukan Operator : +, -, *, /')
+
+        //      2. Hitung angka1 dan angka2 sesuai dengan operator inputan
+        if(operator == '+'){
+            hasil = angka1 + angka2
+            // alert
+        }else if(operator == '-'){
+            hasil = angka1 - angka2
+        }else if(operator == '*'){
+            hasil = angka1 * angka2
+        }else if(operator == '/'){
+            hasil = angka1 / angka2
+        }else{
+            hasil = undefined
+        }
+
+        //      3. Tampilkan hasil perhitungan menggunakan alert
+        if(hasil === undefined){
+            alert(`Inputan Tidak Sesuai`)
+        }else{
+            alert(`Hasil Perhitungan : ${angka1} ${operator} ${angka2} = ${hasil}`)
         }
     </script>
-</body>
-</html>
 </body>
 </html>
