@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // IDENTIFIKASI BB IDEAL/TIDAK IDEAL
+        // Parameter : Berat Badan (Kg), Tinggi (Cm), Rumus IMT
+        // Step1. Buat prompt untuk mendapatkan data BB dan Tinggi dari user
+        let beratBadan = prompt('Masukan Berat Badan Anda (Kg)')
+        let tinggiBadan = prompt('Masukan Tinggi Badan Anda (Cm)')
+
+        // Step2. Hitung IMT = (Berat Badan / ((Tinggi * 0.01)^2))
+        let imt = beratBadan / Math.pow((tinggiBadan * 0.01), 2)
+
+        // Step3. Conditional statement untuk menentukan klasifikasi IMT
+        let hasilKlasifikasi = ''
+        if(imt < 18.5){
+            hasilKlasifikasi += 'BB Anda Kurang'
+        }else if(imt >= 18.5 && imt <= 24.9){
+            hasilKlasifikasi += 'BB Anda Ideal'
+        }else if(imt >= 25 && imt <= 29.9){
+            hasilKlasifikasi += 'BB Anda Berlebih'
+        }else if(imt >= 30 && imt <= 39.9){
+            hasilKlasifikasi += 'BB Anda Sangat Berlebih'
+        }else{
+            hasilKlasifikasi += 'Obesitas'
+        }
+
+        // Step4. Kita munculkan dalam bentuk alert
+        alert(`
+            BB Anda = ${beratBadan} \n
+            Tinggi Anda = ${tinggiBadan} \n
+            IMT = ${hasilKlasifikasi}
+        `)
+    </script>
+</body>
+</html>
