@@ -83,4 +83,3 @@ while(point < 100){
     point-- // Decrement
     console.log(point)
 }
-
