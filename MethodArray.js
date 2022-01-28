@@ -37,7 +37,7 @@ console.log(students)
 //      - Start Index : Ingin melakukan sesuatu dimulai dari index ke-...
 //      - totalDataToDelete : Jumlah data yang ingin dihapus
 //      - NewData : Data bakalan ditambahkan sesuai dengan start index
-let arrBulan = ['Jan', 'Feb', 'Mar']
+// let arrBulan = ['Jan', 'Feb', 'Mar']
 // arrBulan.splice(1, 0, 'Jan to Feb')
 // console.log(arrBulan)
 
@@ -50,8 +50,8 @@ let arrBulan = ['Jan', 'Feb', 'Mar']
 // arrBulan.splice(1, 0)
 // console.log(arrBulan)
 
-arrBulan.splice(1, 2, 'Senin', 'Selasa') // Menghapus 2 data, dimulai dari index ke-1 serta menambahkan Senin & Selasa
-console.log(arrBulan)
+// arrBulan.splice(1, 2, 'Senin', 'Selasa') // Menghapus 2 data, dimulai dari index ke-1 serta menambahkan Senin & Selasa
+// console.log(arrBulan)
 
 // Slice 
 // Mengambil data dari index ke-awal sampai index ke-akhir (index ke-akhir tidak ikut)  
@@ -71,5 +71,3 @@ console.log(locker1.indexOf('Jam Tangan'))
 let angkaAcak = [5, 6, 10, 11, 3, 15, 20, 100]
 console.log(angkaAcak.sort((a, b) => a-b))
 console.log(angkaAcak.sort((a, b) => b-a))
-
-

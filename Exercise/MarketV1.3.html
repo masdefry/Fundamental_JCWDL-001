@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Identifikasi Data : Product, Harga, Stock, Quantity, Total Per-item, Grand Total, Uang Pembayaran, Uang Kembalian
+        // Step1. Menerima inputan quantity dari user
+        //          - Apabila quantity > stock, tampilkan prompt secara terus menerus
+        // Step2. Cari total per-product
+        // Step3. Hitung grand total
+        // Step4. Menerima input uang pembayaran
+        //          - Apabila nominal < grand total, tampilkan prompt secara terus menerus
+
+        let product1 = 'Apel'
+        let product2 = 'Jeruk'
+        let product3 = 'Anggur'
+
+        let stockProduct1 = 10
+        let stockProduct2 = 20
+        let stockProduct3 = 30
+
+        let hargaProduct1 = 10000
+        let hargaProduct2 = 15000
+        let hargaProduct3 = 20000
+
+        let quantityProduct1
+        do{
+            quantityProduct1 = Number(prompt(`Masukan Quantity ${product1}. "Harganya Rp.${hargaProduct1}"`))
+        }while(quantityProduct1 > stockProduct1)
+
+        let quantityProduct2
+        do{
+            quantityProduct2 = Number(prompt(`Masukan Quantity ${product2}. "Harganya Rp.${hargaProduct2}"`))
+        }while(quantityProduct2 > stockProduct2)
+
+        let quantityProduct3
+        do{
+            quantityProduct3 = Number(prompt(`Masukan Quantity ${product3}. "Harganya Rp.${hargaProduct3}"`))
+        }while(quantityProduct3 > stockProduct3)
+
+        let totalProduct1 = quantityProduct1 * hargaProduct1
+        let totalProduct2 = quantityProduct2 * hargaProduct2
+        let totalProduct3 = quantityProduct3 * hargaProduct3
+
+        let grandTotal = totalProduct1 + totalProduct2 + totalProduct3
+
+        alert(`
+                DAFTAR BELANJA \n
+                ${product1} : ${quantityProduct1} x ${hargaProduct1} = ${totalProduct1} \n
+                ${product2} : ${quantityProduct2} x ${hargaProduct2} = ${totalProduct2} \n
+                ${product3} : ${quantityProduct3} x ${hargaProduct3} = ${totalProduct3} \n
+                GRAND TOTAL : Rp.${grandTotal}
+            `)
+
+        let uangPembayaran
+        do{
+            uangPembayaran = prompt('Silahkan Masukan Uang Pembayaran')
+        }while(uangPembayaran < grandTotal)
+
+        alert(`
+            STRUCK \n
+            ${product1} : ${quantityProduct1} x ${hargaProduct1} = ${totalProduct1} \n
+            ${product2} : ${quantityProduct2} x ${hargaProduct2} = ${totalProduct2} \n
+            ${product3} : ${quantityProduct3} x ${hargaProduct3} = ${totalProduct3} \n
+            GRAND TOTAL : Rp.${grandTotal.toLocaleString()}
+            PEMBAYARAN  : Rp.${uangPembayaran}
+            KEMBALIAN   : Rp.${uangPembayaran - grandTotal}
+        `)
+    </script>
+</body>
+</html>
