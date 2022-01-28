@@ -29,7 +29,7 @@
         let hargaProduct2 = 15000
         let hargaProduct3 = 20000
 
-        let quantityProduct1 = prompt(`Masukan Quantity ${product1}. "Harganya Rp.${hargaProduct1}"`)
+        let quantityProduct1 = prompt(`Masukan Quantity ${product1}. "Harganya Rp.${hargaProduct1}"`) // 100 -> 10
         if(quantityProduct1 > stockProduct1){
             quantityProduct1 = stockProduct1
             alert('Jumlah Qty Melebihi Stock. Quantity = Stock')
@@ -61,7 +61,7 @@
                 GRAND TOTAL : Rp.${grandTotal}
             `)
 
-        let uangPembayaran = prompt('Silahkan Masukan Uang Pembayaran')
+        let uangPembayaran = prompt('Silahkan Masukan Uang Pembayaran') // 50000
         if(uangPembayaran < grandTotal){
             alert('Uang Pembayaran Kurang, Transaksi Dibatalkan!')
         }else{

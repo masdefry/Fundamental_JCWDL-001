@@ -28,7 +28,7 @@ for(let i=0; i<3; i++){ // Outside Loop
 
 for(let i=0; i < 2; i++){
     console.log(i)
-    for(let j=0; j<i; j++){
+    for(let j=0; j<i; j++){ // J=0 -> J=1
         console.log(j)
     }
 }
