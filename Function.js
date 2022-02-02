@@ -94,9 +94,18 @@ penjumlahan(x, y) // Indirect argument
 
 // FUNCTION WITH DEFAULT PARAMETER
 // Fungsinya : Untuk mengantisipasi apabila function yang kita buat tidak menerima argument/inputan
-function sapa(nama = 'Anonymous'){
-    console.log(`Hello, ${nama}!`)
+// function sapa(nama = 'Anonymous'){
+//     console.log(`Hello, ${nama}!`)
+// }
+
+// sapa('Rian')
+// sapa()
+
+// Ex. Function inside scope
+if(1 < 2){
+    function sapa(){
+        console.log('Hai, Student Purwadhika!')
+    }
 }
 
-sapa('Rian')
 sapa()
