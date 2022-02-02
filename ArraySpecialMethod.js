@@ -52,3 +52,11 @@ let printStudentsPwd = studentsPwd.map((value) => {
 console.log(printStudentsPwd)
 
 // .filter
+// - Mirip dengan .map
+// - Array baru yg dihasilkan panjangnya tidak sama dengan array aslinya
+let dataAcak = [10, 'Javascript', null, undefined, 'Purwadhika']
+let newData = dataAcak.filter((value) => {
+    return typeof(value) === 'string'
+})
+console.log(dataAcak)
+console.log(newData)
