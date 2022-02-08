@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chalenge</title>
+</head>
+<body>
+    <!-- 
+        EVEN/ODD 
+        - Parameter : angkaInput, hasilPerhitungan
+    -->
+
+    <h1> EVEN/ODD APPS </h1>
+
+     <h3>
+         Masukan Angka :
+     </h3>
+     <input type="number" id="angkaInput" placeholder="Masukan Angka Bernilai Positif">
+     <br>
+     <input type="button" id="buttonHitung" value="Check!">
+     <br>
+     <h3 id="outputHitung"> . . . </h3>
+
+     <br><br><br>
+     <h3 class="groupingH3">Javascript-1</h3>
+     <h3 class="groupingH3">Javascript-2</h3>
+     <h3 class="groupingH3">Javascript-3</h3>
+</body>
+</html>
+
+<script>
+    let button = document.getElementById('buttonHitung')
+    button.addEventListener('click', EvenOrOdd)
+
+    function EvenOrOdd(){
+        let angka = document.getElementById('angkaInput').value
+
+        if(angka % 2 === 0){
+            document.getElementById('outputHitung').innerHTML = `Bilangan ${angka} = Genap`
+        }else{
+            document.getElementById('outputHitung').innerHTML = `Bilangan ${angka} = Ganjil`
+        }
+
+        let elementH3 = document.getElementsByClassName('groupingH3')
+        for(let i=0; i<elementH3.length; i++){
+            elementH3[i].style.color = 'Red'
+        }
+    }
+</script>
