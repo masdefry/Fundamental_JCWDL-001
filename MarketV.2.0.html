@@ -34,22 +34,22 @@
             Name & Price Product
         </label>
         <br>
-        <input type="text" name="productName" placeholder="Enter Your Product Name">
-        <input type="number" name="productPrice" placeholder="Enter Your Product Price">
+        <input type="text" class="inputProduct" placeholder="Enter Your Product Name">
+        <input type="number" class="inputProduct" placeholder="Enter Your Product Price">
         <br><br>
         <label>
             Stock Product
         </label>
         <br>
-        <input type="number" name="productStock" placeholder="Enter Your Product Stock">
+        <input type="number" class="inputProduct" placeholder="Enter Your Product Stock">
         <br><br>
         <label>
             Image URL
         </label>
         <br>
-        <input type="text" name="productStock" placeholder="Enter Your Product Stock">
+        <input type="text" class="inputProduct" placeholder="Enter Your Product Image">
         <br><br><br>
-        <input type="button" name="buttonSubmit" value="Submit">
+        <input type="button" id="buttonSubmit" value="Submit">
         <br><br>
     </fieldset>
 
@@ -71,59 +71,119 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td> 1 </td>
-                    <td> Laptop Lenovo </td>
-                    <td> 15000000 </td>
-                    <td> 100 </td>
-                    <td>
-                        <center>
-                            <image src="https://img.tek.id/img/library/library-2020-04/images/Dommara/Lenovo%20IdeaPad%20S145%20content.jpg" width="100px" height="100px"></image>
-                        </center>
-                    </td>
-                    <td>
-                        <center>
-                            <input type="button" name="buttonEdit" value="Edit">
-                            <input type="button" name="buttonDelete" value="Delete">
-                        </center>
-                    </td>
-                </tr>
-                <tr>
-                    <td> 1 </td>
-                    <td> Laptop Lenovo </td>
-                    <td> 15000000 </td>
-                    <td> 100 </td>
-                    <td>
-                        <center>
-                            <image src="https://img.tek.id/img/library/library-2020-04/images/Dommara/Lenovo%20IdeaPad%20S145%20content.jpg" width="100px" height="100px"></image>
-                        </center>
-                    </td>
-                    <td>
-                        <center>
-                            <input type="button" name="buttonEdit" value="Edit">
-                            <input type="button" name="buttonDelete" value="Delete">
-                        </center>
-                    </td>
-                </tr>
-                <tr>
-                    <td> 1 </td>
-                    <td> Laptop Lenovo </td>
-                    <td> 15000000 </td>
-                    <td> 100 </td>
-                    <td>
-                        <center>
-                            <image src="https://img.tek.id/img/library/library-2020-04/images/Dommara/Lenovo%20IdeaPad%20S145%20content.jpg" width="100px" height="100px"></image>
-                        </center>
-                    </td>
-                    <td>
-                        <center>
-                            <input type="button" name="buttonEdit" value="Edit">
-                            <input type="button" name="buttonDelete" value="Delete">
-                        </center>
-                    </td>
-                </tr>
+                <!-- Kita isi dengan data milik kita -->
             </tbody>
         </table>
     </fieldset>
 </body>
 </html>
+
+<script>
+    // ### Database Products
+    let dataProducts = [
+        { 
+            name: 'Lenovo Ideapad Gaming', 
+            price: 15000000,
+            stock: 100,
+            image: 'https://1.bp.blogspot.com/-B1be0mW1Jzo/Xviyt1Z9L8I/AAAAAAAAfXw/nFx593OCTZgfPr8N7sUTlTeMG8VUG41bACK4BGAsYHg/s828/Lenovo%2BIdeaPad%2BGaming%2B3i%2B15IMH05%2BLaptophia.JPG' 
+        },
+        {
+            name: 'ASUS TUF',
+            price: 12500000,
+            stock: 50, 
+            image: 'https://img.tek.id/img/content/2019/07/23/18559/tuf-gaming-fx505-dt-laptop-gaming-murah-yang-hampir-sempurna-Lx7LHkyT4i.jpg'
+        },
+        {
+            name: 'Acer Nitro',
+            price: 17500000,
+            stock: 25, 
+            image: 'https://s0.bukalapak.com/img/5052238772/large/Laptop_Acer_Predator_Nitro_5.jpg.webp'
+        },
+        {
+            name: 'Acer Nitro',
+            price: 17500000,
+            stock: 25, 
+            image: 'https://s0.bukalapak.com/img/5052238772/large/Laptop_Acer_Predator_Nitro_5.jpg.webp'
+        },
+    ]
+    
+    // ### Show Data Products
+    function showDataProducts(){
+        let output = ''
+        dataProducts.forEach((value, index) => {
+            output += `
+                <tr>
+                    <td>
+                        ${index}
+                    </td>
+                    <td>
+                        ${value.name}
+                    </td>
+                    <td>
+                        ${value.price}
+                    </td>
+                    <td>
+                        ${value.stock}
+                    </td>
+                    <td>
+                        <image src="${value.image}" width="100px" />
+                    </td>
+                    <td>
+                        <input type="button" value="Edit">
+                        <input type="button" value="Delete" onClick="DeleteDataProduct(${index})">
+                    </td>
+                </tr>
+            `
+        })
+
+        let getTable = document.getElementById('tableProducts').getElementsByTagName('tbody')[0]
+        getTable.innerHTML = output
+    }
+    showDataProducts()
+
+    // ### Add Data Product
+    document.getElementById('buttonSubmit').addEventListener('click', AddDataProduct)
+    function AddDataProduct(){
+        let inputs = document.getElementsByClassName('inputProduct')
+        
+        let productName = inputs[0].value 
+        let productPrice = inputs[1].value 
+        let productStock = inputs[2].value 
+        let productImage = inputs[3].value 
+
+        if(productName && productPrice && productStock && productImage){
+            // Push Datanya
+            dataProducts.push(
+                {
+                    name: productName,
+                    price: productPrice,
+                    stock: productStock,
+                    image: productImage
+                }
+            )
+
+            showDataProducts()
+
+            inputs[0].value = ''
+            inputs[1].value = ''
+            inputs[2].value = ''
+            inputs[3].value = ''
+        }else{
+            alert('Semua Data Harus Diisi!')
+        }
+    }
+
+    // ### Delete Data Product
+    function DeleteDataProduct(index){
+        let confirmBox = confirm(`
+            Are you sure want to delete ${dataProducts[index].name}?
+        `)
+
+        if(confirmBox){ // confirmBox === true
+            // Delete Data
+            dataProducts.splice(index, 1)
+            alert('Delete Product Success!')
+            showDataProducts()
+        }
+    }
+</script>
