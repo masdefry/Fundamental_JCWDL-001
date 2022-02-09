@@ -44,13 +44,24 @@
              </a>
          </p>
 
-         <h3 class="classJS">Javascript-1</h3>
-         <h3 class="classJS">Javascript-2</h3>
-         <h3 class="classJS">Javascript-3</h3>
+         <h3 class="classJS">Javascript-1 (Text Content)</h3>
+         <h3 class="classJS">Javascript-2 (Text Content)</h3>
+         <h3 class="classJS">Javascript-3 (Text Content)</h3>
 
          <h5 id="idH5">
              Purwadhika School 1
          </h5>
+
+         <h3 id="value1">
+             Value-1
+         </h3>
+
+         <!-- 
+             .value
+          -->
+          <input type="text"> 
+          <input type="number">
+          <input type="email">
 </body>
 </html>
 
@@ -106,4 +117,10 @@
     h5Styling.style.color = 'Blue'
     h5Styling.style.fontSize = '100px'
     h5Styling.style.fontWeight = '100'
+
+    function UbahValue2(){
+        document.getElementById('value1').innerHTML = 'Value-2'
+    }
+
+    UbahValue2()
 </script>
