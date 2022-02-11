@@ -1,5 +1,5 @@
 // ### Show Data Products
-function showDataProducts(idx){
+function showDataProducts(idx){ // idx ---> Didapat ketika kita klik button edit
     let output = ''
     dataProducts.forEach((value, index) => {
         if(idx == index){
@@ -9,20 +9,20 @@ function showDataProducts(idx){
                         ${index}
                     </td>
                     <td>
-                        <input type="text" value="${value.name}">
+                        <input type="text" class="editProduct" value="${value.name}">
                     </td>
                     <td>
-                        <input type="number" value="${value.price}">
+                        <input type="number" class="editProduct" value="${value.price}">
                     </td>
                     <td>
-                        <input type="number" value="${value.stock}">
+                        <input type="number" class="editProduct" value="${value.stock}">
                     </td>
                     <td>
                         <image src="${value.image}" width="100px" />
                     </td>
                     <td>
-                        <input type="button" value="Edit" onClick="showDataProducts(${index})">
-                        <input type="button" value="Delete" onClick="DeleteDataProduct(${index})">
+                        <input type="button" value="Save" onClick="onSaveDataProduct(${index})">
+                        <input type="button" value="Cancel" onClick="showDataProducts()">
                     </td>
                 </tr>
             `
@@ -42,11 +42,15 @@ function showDataProducts(idx){
                         ${value.stock}
                     </td>
                     <td>
+                        ${value.category}
+                    </td>
+                    <td>
                         <image src="${value.image}" width="100px" />
                     </td>
                     <td>
                         <input type="button" value="Edit" onClick="showDataProducts(${index})">
                         <input type="button" value="Delete" onClick="DeleteDataProduct(${index})">
+                        <input type="button" value="+ Add To Cart">
                     </td>
                 </tr>
             `
@@ -54,6 +58,7 @@ function showDataProducts(idx){
     })
 
     let getTable = document.getElementById('tableProducts').getElementsByTagName('tbody')[0]
+    console.log(getTable)
     getTable.innerHTML = output
 }
 showDataProducts()
@@ -66,16 +71,18 @@ function AddDataProduct(){
     let productName = inputs[0].value 
     let productPrice = inputs[1].value 
     let productStock = inputs[2].value 
-    let productImage = inputs[3].value 
+    let productCategory = inputs[3].value
+    let productImage = inputs[4].value 
 
-    if(productName && productPrice && productStock && productImage){
+    if(productName && productPrice && productStock && productImage && productCategory){
         // Push Datanya
         dataProducts.push(
             {
                 name: productName,
                 price: productPrice,
                 stock: productStock,
-                image: productImage
+                image: productImage,
+                category: productCategory
             }
         )
 
@@ -85,6 +92,7 @@ function AddDataProduct(){
         inputs[1].value = ''
         inputs[2].value = ''
         inputs[3].value = ''
+        inputs[4].value = ''
 
         document.getElementById('errorMessage').innerHTML = ''
     }else{
@@ -103,5 +111,26 @@ function DeleteDataProduct(index){
         dataProducts.splice(index, 1)
         alert('Delete Product Success!')
         showDataProducts()
+    }
+}
+
+// ### Edit Data Product
+function onSaveDataProduct(index){
+    let inputEdit = document.getElementsByClassName('editProduct')
+    
+    let newProductName = inputEdit[0].value
+    let newProductPrice = inputEdit[1].value 
+    let newProductStock = inputEdit[2].value 
+
+    if(newProductName && newProductPrice && newProductStock){
+        dataProducts[index].name = newProductName
+        dataProducts[index].price = newProductPrice
+        dataProducts[index].stock = newProductStock
+
+        document.getElementById('errorMessage1').innerHTML = ""
+
+        showDataProducts()
+    }else{
+        document.getElementById('errorMessage1').innerHTML = "Data Must Be Filled!"
     }
 }

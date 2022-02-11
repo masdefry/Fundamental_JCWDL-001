@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Market V.2.0</title>
     <style>
-        input{
+        input, select{
             padding: 10px;
         }
 
-        #tableProducts{
+        #tableProducts, #tableCarts{
             width: 75%;
             border: 1px solid black;
         }
@@ -21,6 +21,15 @@
         }
 
         #tableProducts tr, td{
+            text-align: center;
+        }
+
+        #tableCarts thead{
+            background-color: aquamarine;
+            font-size: 16px;
+        }
+
+        #tableCarts tr, td{
             text-align: center;
         }
     </style>
@@ -38,10 +47,16 @@
         <input type="number" class="inputProduct" placeholder="Enter Your Product Price">
         <br><br>
         <label>
-            Stock Product
+            Stock & Category Product
         </label>
         <br>
         <input type="number" class="inputProduct" placeholder="Enter Your Product Stock">
+        <select class="inputProduct">
+            <option value="Computer">Computer</option>
+            <option value="Handphone">Handphone</option>
+            <option value="Air Conditioner">Air Conditioner</option>
+            <option value="Lemari Es">Lemari Es</option>
+        </select>
         <br><br>
         <label>
             Image URL
@@ -62,6 +77,9 @@
                 Data Products
             </h1>
         </legend>
+        <h3 id="errorMessage1" style="color: red;">
+
+        </h3>
         <table id="tableProducts">
             <thead>
                 <tr>
@@ -69,7 +87,35 @@
                     <th>Product Name</th>
                     <th>Price</th>
                     <th>Stock</th>
+                    <th>Category</th>
                     <th>Image</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Kita isi dengan data milik kita -->
+            </tbody>
+        </table>
+    </fieldset>
+
+    <fieldset>
+        <legend>
+            <h1>
+                Data Carts
+            </h1>
+        </legend>
+        <h3 id="errorMessage1" style="color: red;">
+
+        </h3>
+        <table id="tableCarts">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Product Name</th>
+                    <th>Image</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
                     <th>Action</th>
                 </tr>
             </thead>
