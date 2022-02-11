@@ -1,30 +1,56 @@
 // ### Show Data Products
-function showDataProducts(){
+function showDataProducts(idx){
     let output = ''
     dataProducts.forEach((value, index) => {
-        output += `
-            <tr>
-                <td>
-                    ${index}
-                </td>
-                <td>
-                    ${value.name}
-                </td>
-                <td>
-                    ${value.price}
-                </td>
-                <td>
-                    ${value.stock}
-                </td>
-                <td>
-                    <image src="${value.image}" width="100px" />
-                </td>
-                <td>
-                    <input type="button" value="Edit">
-                    <input type="button" value="Delete" onClick="DeleteDataProduct(${index})">
-                </td>
-            </tr>
-        `
+        if(idx == index){
+            output += `
+                <tr>
+                    <td>
+                        ${index}
+                    </td>
+                    <td>
+                        <input type="text" value="${value.name}">
+                    </td>
+                    <td>
+                        <input type="number" value="${value.price}">
+                    </td>
+                    <td>
+                        <input type="number" value="${value.stock}">
+                    </td>
+                    <td>
+                        <image src="${value.image}" width="100px" />
+                    </td>
+                    <td>
+                        <input type="button" value="Edit" onClick="showDataProducts(${index})">
+                        <input type="button" value="Delete" onClick="DeleteDataProduct(${index})">
+                    </td>
+                </tr>
+            `
+        }else{
+            output += `
+                <tr>
+                    <td>
+                        ${index}
+                    </td>
+                    <td>
+                        ${value.name}
+                    </td>
+                    <td>
+                        ${value.price}
+                    </td>
+                    <td>
+                        ${value.stock}
+                    </td>
+                    <td>
+                        <image src="${value.image}" width="100px" />
+                    </td>
+                    <td>
+                        <input type="button" value="Edit" onClick="showDataProducts(${index})">
+                        <input type="button" value="Delete" onClick="DeleteDataProduct(${index})">
+                    </td>
+                </tr>
+            `
+        }
     })
 
     let getTable = document.getElementById('tableProducts').getElementsByTagName('tbody')[0]
@@ -59,8 +85,10 @@ function AddDataProduct(){
         inputs[1].value = ''
         inputs[2].value = ''
         inputs[3].value = ''
+
+        document.getElementById('errorMessage').innerHTML = ''
     }else{
-        alert('Semua Data Harus Diisi!')
+        document.getElementById('errorMessage').innerHTML = 'Data Must Be Filled!'
     }
 }
 
