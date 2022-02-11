@@ -50,7 +50,7 @@ function showDataProducts(idx){ // idx ---> Didapat ketika kita klik button edit
                     <td>
                         <input type="button" value="Edit" onClick="showDataProducts(${index})">
                         <input type="button" value="Delete" onClick="DeleteDataProduct(${index})">
-                        <input type="button" value="+ Add To Cart">
+                        <input type="button" value="+ Add To Cart" onClick="addToCart(${index})">
                     </td>
                 </tr>
             `
@@ -134,3 +134,59 @@ function onSaveDataProduct(index){
         document.getElementById('errorMessage1').innerHTML = "Data Must Be Filled!"
     }
 }
+
+// ### Add To Cart
+function addToCart(index){
+    let quantity = prompt('Silahkan Masukan Quantity :')
+
+    if(dataProducts[index].stock < quantity){
+        alert('Quantity Melebihi Stock')
+    }else{
+        let dataToSave = {
+            name: dataProducts[index].name,
+            image: dataProducts[index].image, 
+            price: dataProducts[index].price,
+            quantity: quantity,
+            total: quantity * dataProducts[index].price
+        }
+
+        dataCarts.push(dataToSave)
+       showDataCarts()
+    }
+}
+
+// ### Show Data Carts
+function showDataCarts(){
+    let output = ''
+    dataCarts.forEach((value, index) => {
+        output += `
+            <tr>
+                <td>
+                    ${index+1}
+                </td>
+                <td>
+                    ${value.name}
+                </td>
+                <td>
+                    <image src="${value.image}" width="75px">
+                </td>
+                <td>
+                    ${value.price}
+                </td>
+                <td>
+                    ${value.quantity}
+                </td>
+                <td>
+                    ${value.total}
+                </td>
+                <td>
+                    <input type="button" value="Delete">
+                </td>
+            </tr>
+        `
+    })
+    console.log(output)
+    document.getElementById('tableCarts').getElementsByTagName('tbody')[0].innerHTML = output
+}
+
+showDataCarts()

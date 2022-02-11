@@ -20,12 +20,8 @@ let dataProducts = [
         stock: 25, 
         image: 'https://s0.bukalapak.com/img/5052238772/large/Laptop_Acer_Predator_Nitro_5.jpg.webp',
         category: 'Laptop'
-    },
-    {
-        name: 'Acer Nitro',
-        price: 17500000,
-        stock: 25, 
-        image: 'https://s0.bukalapak.com/img/5052238772/large/Laptop_Acer_Predator_Nitro_5.jpg.webp',
-        category: 'Laptop'
-    },
+    }
 ]
+
+// ### Database Carts
+let dataCarts = []
