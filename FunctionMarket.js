@@ -139,8 +139,8 @@ function onSaveDataProduct(index){
 function addToCart(index){
     let quantity = prompt('Silahkan Masukan Quantity :')
 
-    if(dataProducts[index].stock < quantity){
-        alert('Quantity Melebihi Stock')
+    if(dataProducts[index].stock < quantity || quantity === null){
+        alert('Quantity Melebihi Stock / Quantity Masih Kosong')
     }else{
         let dataToSave = {
             name: dataProducts[index].name,
@@ -151,6 +151,9 @@ function addToCart(index){
         }
 
         dataCarts.push(dataToSave)
+
+        document.getElementById('totalCarts').innerHTML = `Carts : ${dataCarts.length}`
+
        showDataCarts()
     }
 }
