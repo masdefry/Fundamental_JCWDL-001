@@ -35,7 +35,7 @@
     </style>
 </head>
 <body>
-    <fieldset>
+    <fieldset id="userMenu">
         <legend>
             <h1>Input Data</h1>
         </legend>
@@ -69,6 +69,18 @@
         <h3 id="errorMessage" style="color: red;">
             
         </h3>
+    </fieldset>
+
+    <fieldset>
+        <legend>
+            <h1>Search...</h1>
+        </legend>
+        <label>
+            Product Name
+        </label>
+        <br>
+        <input type="text" id="filterName" placeholder="Enter Your Product Name" oninput="FilterByName()">
+        <br><br>
     </fieldset>
 
     <fieldset>
@@ -130,3 +142,4 @@
 
 <script src="DatabaseProducts.js"></script>
 <script src="FunctionMarket.js"></script>
+<script src="FilterMarket.js"></script>

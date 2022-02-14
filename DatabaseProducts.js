@@ -1,4 +1,5 @@
-// ### Database Products
+// ### Database Products 
+// filter: a
 let dataProducts = [
     { 
         name: 'Lenovo Ideapad Gaming', 
