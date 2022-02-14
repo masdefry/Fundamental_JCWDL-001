@@ -146,29 +146,6 @@ function onSaveDataProduct(index){
     }
 }
 
-// ### Add To Cart
-function addToCart(index){
-    let quantity = prompt('Silahkan Masukan Quantity :')
-
-    if(dataProducts[index].stock < quantity || quantity === null){
-        alert('Quantity Melebihi Stock / Quantity Masih Kosong')
-    }else{
-        let dataToSave = {
-            name: dataProducts[index].name,
-            image: dataProducts[index].image, 
-            price: dataProducts[index].price,
-            quantity: quantity,
-            total: quantity * dataProducts[index].price
-        }
-
-        dataCarts.push(dataToSave)
-
-        document.getElementById('totalCarts').innerHTML = `Carts : ${dataCarts.length}`
-
-       showDataCarts()
-    }
-}
-
 // ### Show Data Carts
 function showDataCarts(){
     let output = ''
@@ -203,4 +180,41 @@ function showDataCarts(){
     document.getElementById('tableCarts').getElementsByTagName('tbody')[0].innerHTML = output
 }
 
-showDataCarts()
+// ### Add To Cart
+function addToCart(index){
+    let quantity = Number(prompt('Silahkan Masukan Quantity :'))
+
+    if(dataProducts[index].stock < quantity || quantity === 0){
+        alert('Quantity Melebihi Stock / Quantity Masih Kosong')
+    }else{
+        let checkProductExist = false 
+        let indexProductExist
+        // [{id: 0, name: "Lenovo Ideapad Gaming", quantity: 4}]
+        dataCarts.forEach((value, idx) => {
+            if(index === value.id){
+                checkProductExist = true 
+                indexProductExist = idx
+            }
+        })
+
+        if(checkProductExist){ // checkProductExist === true
+            dataCarts[indexProductExist].quantity += quantity
+            dataCarts[indexProductExist].total = dataCarts[indexProductExist].quantity * dataCarts[indexProductExist].price
+            showDataCarts()
+        }else{
+            let dataToSave = {
+                id: index,
+                name: dataProducts[index].name,
+                image: dataProducts[index].image, 
+                price: dataProducts[index].price,
+                quantity: quantity,
+                total: quantity * dataProducts[index].price
+            }
+    
+            dataCarts.push(dataToSave)
+    
+            document.getElementById('totalCarts').innerHTML = `Carts : ${dataCarts.length}`
+            showDataCarts()
+        }
+    }
+}
