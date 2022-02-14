@@ -18,6 +18,15 @@ function showDataProducts(idx){ // idx ---> Didapat ketika kita klik button edit
                         <input type="number" class="editProduct" value="${value.stock}">
                     </td>
                     <td>
+                        <select class="editProduct">
+                            <option value="${value.category}">${value.category}</option>
+                            <option value="Computer">Computer</option>
+                            <option value="Handphone">Handphone</option>
+                            <option value="Air Conditioner">Air Conditioner</option>
+                            <option value="Lemari Es">Lemari Es</option>
+                        </select>
+                    </td>
+                    <td>
                         <image src="${value.image}" width="100px" />
                     </td>
                     <td>
@@ -121,11 +130,13 @@ function onSaveDataProduct(index){
     let newProductName = inputEdit[0].value
     let newProductPrice = inputEdit[1].value 
     let newProductStock = inputEdit[2].value 
+    let newProductCategory = inputEdit[3].value
 
-    if(newProductName && newProductPrice && newProductStock){
+    if(newProductName && newProductPrice && newProductStock && newProductCategory){
         dataProducts[index].name = newProductName
         dataProducts[index].price = newProductPrice
         dataProducts[index].stock = newProductStock
+        dataProducts[index].category = newProductCategory
 
         document.getElementById('errorMessage1').innerHTML = ""
 
