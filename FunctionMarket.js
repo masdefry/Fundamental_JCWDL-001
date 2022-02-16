@@ -1,3 +1,10 @@
+let menu = Number(prompt(`Silahkan Masukan Menu : \n 1. Kasir \n 2. Customer`))
+if(menu === 1){
+    document.getElementsByClassName('menuCustomer')[0].setAttribute('hidden', true)
+}else{
+    document.getElementsByClassName('menuKasir')[0].setAttribute('hidden', true)
+}
+
 // ### Show Data Products
 function showDataProducts(idx){ // idx ---> Didapat ketika kita klik button edit
     let output = ''
@@ -57,9 +64,9 @@ function showDataProducts(idx){ // idx ---> Didapat ketika kita klik button edit
                         <image src="${value.image}" width="100px" />
                     </td>
                     <td>
-                        <input type="button" value="Edit" onClick="showDataProducts(${index})">
-                        <input type="button" value="Delete" onClick="DeleteDataProduct(${index})">
-                        <input type="button" value="+ Add To Cart" onClick="addToCart(${index})">
+                        <input type="button" value="Edit" onClick="showDataProducts(${index})" ${menu===2? 'hidden':''}>
+                        <input type="button" value="Delete" onClick="DeleteDataProduct(${index})"  ${menu===2? 'hidden':''}>
+                        <input type="button" value="+ Add To Cart" onClick="addToCart(${index})"  ${menu===1? 'hidden':''}>
                     </td>
                 </tr>
             `

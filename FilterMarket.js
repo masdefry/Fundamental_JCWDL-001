@@ -46,9 +46,9 @@ function RenderDataFilter(newArr){
                         <image src="${value.image}" width="100px" />
                     </td>
                     <td>
-                        <input type="button" value="Edit" onClick="showDataProducts(${index})">
-                        <input type="button" value="Delete" onClick="DeleteDataProduct(${index})">
-                        <input type="button" value="+ Add To Cart" onClick="addToCart(${index})">
+                        <input type="button" value="Edit" onClick="showDataProducts(${index})" ${menu===2? 'hidden':false}>
+                        <input type="button" value="Delete" onClick="DeleteDataProduct(${index})"  ${menu===2? 'hidden':false}>
+                        <input type="button" value="+ Add To Cart" onClick="addToCart(${index})"  ${menu===1? 'hidden':false}>
                     </td>
                 </tr>
             `
