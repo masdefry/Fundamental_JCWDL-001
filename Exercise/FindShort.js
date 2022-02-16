@@ -2,9 +2,9 @@
 // Ex. Purwadhika Digital School ---> 6
 
 function FindShort(kalimat){
-    kalimatToSplit = kalimat.split(' ')
+    kalimatToSplit = kalimat.split(' ') // [Ryan, Safira, Aisyah]
     
-    let karakterTerpendek = kalimatToSplit[0].length // 10 ---> 7 < 10? 7 ---> 6 < 7? 6
+    let karakterTerpendek = kalimatToSplit[0].length // 4
 
     for(let i=1; i<kalimatToSplit.length; i++){
         if(kalimatToSplit[i].length < karakterTerpendek){
@@ -16,3 +16,5 @@ function FindShort(kalimat){
 }
 
 FindShort('Purwadhika Digital School')
+FindShort('ABCDE AB ABCDEFG')
+FindShort('Ryan', 'Safira', 'Aisyah')
