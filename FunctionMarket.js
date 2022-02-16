@@ -1,6 +1,7 @@
-let menu = Number(prompt(`Silahkan Masukan Menu : \n 1. Kasir \n 2. Customer`))
+let menu = 2
 if(menu === 1){
     document.getElementsByClassName('menuCustomer')[0].setAttribute('hidden', true)
+    document.getElementsByClassName('menuCustomer')[1].setAttribute('hidden', true)
 }else{
     document.getElementsByClassName('menuKasir')[0].setAttribute('hidden', true)
 }
@@ -160,7 +161,7 @@ function showDataCarts(){
         output += `
             <tr>
                 <td>
-                    ${index+1}
+                    ${value.id}
                 </td>
                 <td>
                     ${value.name}
@@ -183,8 +184,12 @@ function showDataCarts(){
             </tr>
         `
     })
-    console.log(output)
     document.getElementById('tableCarts').getElementsByTagName('tbody')[0].innerHTML = output
+    document.getElementById('totalCarts').innerHTML = `Carts : ${dataCarts.length}`
+    // Step. Disable Button ketika cart = 0
+    if(dataCarts.length > 0){
+        document.getElementsByClassName('menuCustomer')[1].removeAttribute('disabled')
+    }
 }
 
 // ### Add To Cart
@@ -194,6 +199,7 @@ function addToCart(index){
     if(dataProducts[index].stock < quantity || quantity === 0){
         alert('Quantity Melebihi Stock / Quantity Masih Kosong')
     }else{
+        // Step. Melakukan pengecekan apakah data product sudah ada didalam cart?
         let checkProductExist = false 
         let indexProductExist
         // [{id: 0, name: "Lenovo Ideapad Gaming", quantity: 4}]
@@ -204,11 +210,18 @@ function addToCart(index){
             }
         })
 
+        // Step. Apabila sudah ada didalam cart
         if(checkProductExist){ // checkProductExist === true
-            dataCarts[indexProductExist].quantity += quantity
-            dataCarts[indexProductExist].total = dataCarts[indexProductExist].quantity * dataCarts[indexProductExist].price
-            showDataCarts()
-        }else{
+            let totalQuantity = dataCarts[indexProductExist].quantity + quantity
+
+            if(totalQuantity > dataProducts[index].stock){
+                alert('Total Quantity Melebihi Stock!')
+            }else{
+                dataCarts[indexProductExist].quantity += quantity
+                dataCarts[indexProductExist].total = dataCarts[indexProductExist].quantity * dataCarts[indexProductExist].price
+                showDataCarts()
+            }
+        }else{ // Step. Apabila datanya belum ada didalam cart
             let dataToSave = {
                 id: index,
                 name: dataProducts[index].name,
@@ -224,4 +237,52 @@ function addToCart(index){
             showDataCarts()
         }
     }
+}
+
+// ### Payment
+function onPayment(){
+    dataCarts.forEach((value) => {
+        let dataToSave = {
+            id: value.id, 
+            name: value.name,
+            price: value.price,
+            quantity: value.quantity,
+            total: value.total
+        }
+
+        dataTransaction.push(dataToSave)
+    })
+    
+    let output = ''
+    dataTransaction.forEach((value, index) => {
+        output += `
+            <tr>
+                <td>
+                    ${value.id}
+                </td>
+                <td>
+                    ${value.name}
+                </td>
+                <td>
+                    ${value.price}
+                </td>
+                <td>
+                    ${value.quantity}
+                </td>
+                <td>
+                    ${value.total}
+                </td>
+            </tr>
+        `
+    })
+    dataCarts.forEach(value => {
+        dataProducts[value.id].stock -= value.quantity
+    })
+    showDataProducts()
+
+    dataCarts = []
+    showDataCarts()
+    
+    let tablePayment = document.getElementById('tablePayment').getElementsByTagName('tbody')[0]
+    tablePayment.innerHTML = output
 }

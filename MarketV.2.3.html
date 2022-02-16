@@ -10,7 +10,7 @@
             padding: 10px;
         }
 
-        #tableProducts, #tableCarts{
+        #tableProducts, #tableCarts, #tablePayment{
             width: 75%;
             border: 1px solid black;
         }
@@ -30,6 +30,15 @@
         }
 
         #tableCarts tr, td{
+            text-align: center;
+        }
+
+        #tablePayment thead{
+            background-color: aquamarine;
+            font-size: 16px;
+        }
+
+        #tablePayment tr, td{
             text-align: center;
         }
     </style>
@@ -81,6 +90,13 @@
         <br>
         <input type="text" id="filterName" placeholder="Enter Your Product Name" oninput="FilterByName()">
         <br><br>
+        <label>
+            Price
+        </label>
+        <br>
+        <input type="number" class="filterPrice" placeholder="Min Price" oninput="FilterByPrice()">
+        <input type="number" class="filterPrice" placeholder="Max Price" oninput="FilterByPrice()">
+        <br><br>
     </fieldset>
 
     <fieldset>
@@ -95,7 +111,7 @@
         <table id="tableProducts">
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>Index</th>
                     <th>Product Name</th>
                     <th>Price</th>
                     <th>Stock</th>
@@ -122,13 +138,35 @@
         <table id="tableCarts">
             <thead>
                 <tr>
-                    <th>No</th>
+                    <th>Id</th>
                     <th>Product Name</th>
                     <th>Image</th>
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Total</th>
                     <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Kita isi dengan data milik kita -->
+            </tbody>
+        </table>
+        <input class="menuCustomer" type="button" value="Checkout" onclick="onPayment()" disabled>
+    </fieldset>
+    <fieldset class="menuCustomer">
+        <legend>
+            <h1 id="totalCarts">
+                Payment
+            </h1>
+        </legend>
+        <table id="tablePayment">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
                 </tr>
             </thead>
             <tbody>

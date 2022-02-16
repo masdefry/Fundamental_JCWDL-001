@@ -19,7 +19,24 @@ function FilterByName(){
     // ]
 
     return RenderDataFilter(dataFilterByName)
-}   
+}  
+
+function FilterByPrice(){
+    let filterPrice = document.getElementsByClassName('filterPrice')
+    let minPrice = filterPrice[0].value
+    let maxPrice = filterPrice[1].value
+
+    if(minPrice && maxPrice){
+        var filterByPrice = dataProducts.filter(value => {
+            return value.price >= minPrice && value.price <= maxPrice
+        })
+        
+        return RenderDataFilter(filterByPrice)
+    }else{
+        showDataProducts()
+    }
+
+}
 
 // ### Function Rendering Data Filter
 function RenderDataFilter(newArr){

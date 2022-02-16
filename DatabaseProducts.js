@@ -26,3 +26,6 @@ let dataProducts = [
 
 // ### Database Carts
 let dataCarts = []
+
+// ### Database Transaction
+let dataTransaction = []
